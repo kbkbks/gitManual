@@ -2,7 +2,7 @@
 
 # 文一实验室git服务器使用说明
 
-2021/01/08	韩鑫焱
+2021/01/14	韩鑫焱
 
 ## 简介
 
@@ -12,7 +12,9 @@
 
 ## 文一实验室git服务器
 
-*文一服务器内网IP地址：192.168.1.52，用户名：git，密码：123*
+*文一实验室服务器IP地址：192.168.1.52，用户名：git，密码：123（需连接文一404路由器）*
+
+*校园网（下沙、文一）内网IP地址：10.63.110.231，转发端口：6000* 
 
 下面所有操作在Linux和Windows下都可执行，Windows建议安装Git客户端。
 
@@ -55,12 +57,16 @@ git init
 ```
 # 连接远程服务器
 ssh git@192.168.1.52
-# 新建文件夹 所有远程托管项目均放在/home/git/repository
-mkdir /home/git/repository/xxxx.git
+# 新建文件夹 所有远程托管项目均放在/home/git/repository/姓名全拼
+mkdir /home/git/repository/姓名全拼/xxxx.git
 # 初始化仓库
-cd /home/git/repository/xxxx.git
+cd /home/git/repository/姓名全拼/xxxx.git
 git init --bare ./xxxx.git
 ```
+
+当前服务器/home/git/repository目录下已创建好每个人的工作路径（git用户权限），工作路径内需要大家自行建立项目远程仓库。
+
+![](../figure/repository.png)
 
 Github远程仓库直接在网页上创建即可。
 
@@ -77,7 +83,7 @@ git clone git@github.com:xxxx/xxxx.git
 如果是文一实验室git服务器，所有远程托管项目均放在/home/git/repository，所有远程归档项目均放在/home/git/archive，执行
 
 ```
-git clone git@192.168.1.52:/home/git/repository/xxxx.git
+git clone git@192.168.1.52:/home/git/repository/姓名全拼/xxxx.git
 ```
 
 ### 3.添加和提交
@@ -111,7 +117,7 @@ git branch -d dev
 git remote add <仓库名比如origin> <server>
 ```
 
-Github上的<server>在网页上复制得到，文一服务器<server>为git@192.168.1.52:/home/git/repository/xxxx.git。
+Github上的<server>在网页上复制得到，文一服务器<server>为git@192.168.1.52:/home/git/repository/姓名全拼/xxxx.git。
 
 之后将更改提交推送到远程仓库
 
@@ -145,6 +151,19 @@ ssh-keygen -C "邮箱"
 # 此时Windows用户C:\Users\用户名\.ssh 或者 Linux用户 /home/用户名/.ssh 下会多出两个文件 id_rsa和id_rsa.pub，前者是私钥，后者是公钥
 # 将该公钥导入git服务器
 ssh git@192.68.1.52 'cat >> .ssh/autuorized_keys' < ~/.ssh/id_rsa.pub
+```
+
+### 7.下沙校园网连接
+
+目前文一git服务器可通过下沙校园网连接，连接IP地址为：10.63.110.231，转发端口号：6000。校网内网连接时，由于使用非标准ssh端口（非22），部分命令不同。
+
+```
+# ssh连接
+ssh -p 6000 git@10.63.110.231
+# git clone
+git clone ssh://git@10.63.110.231:6000/home/git/repository/姓名全拼/xxxx.git
+# git remote
+git remote add <仓库名比如origin> ssh://git@10.63.110.231:6000/home/git/repository/姓名全拼/xxxx.git
 ```
 
 
