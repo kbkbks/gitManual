@@ -16,7 +16,7 @@
 
 下面所有操作在Linux和Windows下都可执行，Windows建议安装Git客户端。
 
-![](/home/hanxinyan/gitManual/figure/GitClient.png)
+![](../figure/GitClient.png)
 
 本服务器中项目全部使用git管理，项目本地仓库和远程仓库尽量同名，项目进行需要遵从git使用规范流程。
 
@@ -28,7 +28,7 @@ git官网：https://git-scm.com/book/zh/v2
 
 git简明指南：https://www.runoob.com/manual/git-guide/
 
-![](/home/hanxinyan/gitManual/figure/gitRemote.jpeg)
+![](../figure/gitRemote.jpeg)
 
 git常用操作
 
@@ -151,7 +151,7 @@ ssh git@192.68.1.52 'cat >> .ssh/autuorized_keys' < ~/.ssh/id_rsa.pub
 
 ## Github orgnization
 
-![](/home/hanxinyan/gitManual/figure/Github.png)
+![](../figure/Github.png)
 
 Github orgnization现已全面开放团队功能，无项目协作人数和私有库限制，可以在组织中建立私有库进行多人协作项目研发，其pull request功能使得协作更为便利，项目管理者能够直观看见更新的提交并决定是否合并提交。
 
